@@ -332,12 +332,17 @@ right:left;
 	box-sizing: border-box;         /* Opera/IE 8+ */
 	padding:30px;
 }
-#speedo
-{
-	position:absolute;
-	width:10%;
+#speedo {
+	position: absolute;
+	width: 10%;
 	left: 0;
+	padding-left: 18px;
 	top: 50%;
+	border: 4px solid;
+	border-radius: 69px;
+	border-color: #FF0000;
+	width: 60px;
+	height: 80px;
 }
 #speedo h2 {
 	color:#FF0000;
