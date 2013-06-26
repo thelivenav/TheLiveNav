@@ -143,13 +143,13 @@ geocoder = new google.maps.Geocoder();
       	speed = parseInt(speed);
       	if(speed >= 5)
       	{
-	      $("#speed").html(speed + " Mph");
+	      $("#speed").html(speed + ' Mph');
 	      $("#speedo").show();
 	  }
   }
   else
   {
-  	$("#speedo").hide();
+  	//dont hide $("#speedo").hide();
   }
 
 		console.log("update");
@@ -334,8 +334,13 @@ right:left;
 }
 #speedo
 {
+	position:absolute;
 	width:10%;
-	float:left;
+	left: 0;
+	top: 50%;
+}
+#speedo h2 {
+	color:#FF0000;
 }
 #distance
 {
@@ -370,14 +375,14 @@ right:left;
 	
 		<div id="map-canvas"></div>
 
+<div id="speedo">
+	<h2>MPH<br />
+		<span id="speed"></span>
+	</h2>
+</div>
 
 <div id="footer">
 	<div id="test">Loading Approximate Address</div>
-	<div id="speedo">
-		<h2>Speed:<br />
-			<span id="speed"></span>
-		</h2>
-	</div>
 	<div id="distance">
 		<h2><br />
 			<span id="distanceDiv"></span>
