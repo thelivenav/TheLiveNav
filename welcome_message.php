@@ -100,7 +100,7 @@ geocoder = new google.maps.Geocoder();
 		  directionsService.route(request, function(result, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 			  directionsDisplay.setDirections(result);
-			  calculateDistances;
+			  calculateDistances();
 			}
 		  });
             $("#navigateTo").dialog("close" );
@@ -193,19 +193,29 @@ function handleNoGeolocation(errorFlag) {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-    </script>
-<script>
+// script works up to here
+
 function calculateDistances() {
   var service = new google.maps.DistanceMatrixService();
-  service.getDistanceMatrix(
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+      	var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+		
+	service.getDistanceMatrix(
     {
-      origins: pos,
-      destinations: $("#navAddr").val(),
+      origins: [pos],
+      destinations: [$("#navAddr").val()],
       travelMode: google.maps.TravelMode.DRIVING,
       unitSystem: google.maps.UnitSystem.METRIC,
       avoidHighways: false,
       avoidTolls: false
     }, callback);
+	
+	 }); //end get position
+	} //end of geolocation
+
 }
 
 function callback(response, status) {
@@ -216,13 +226,13 @@ function callback(response, status) {
     var destinations = response.destinationAddresses;
     var outputDiv = document.getElementById('distanceDiv');
     distanceDiv.innerHTML = '';
-   # deleteOverlays();
+   // deleteOverlays();
 
     for (var i = 0; i < origins.length; i++) {
       var results = response.rows[i].elements;
-      #addMarker(origins[i], false);
+      // addMarker(origins[i], false);
       for (var j = 0; j < results.length; j++) {
-       # addMarker(destinations[j], true);
+       // addMarker(destinations[j], true);
         distanceDiv.innerHTML += origins[i] + ' to ' + destinations[j]
             + ': ' + results[j].distance.text + ' in '
             + results[j].duration.text + '<br>';
