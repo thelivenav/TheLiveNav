@@ -12,3 +12,4 @@ I have simply edited this code and combined it's various sections to provide the
 
 This is frequently updated, the Google API code remains the property of google, and the website thelivenav.co.uk remains copyright by Michael Gane.
 
+Icons from: http://findicons.com/pack/2580/android_icons (CC licence)
