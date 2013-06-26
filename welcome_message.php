@@ -208,7 +208,7 @@ function calculateDistances() {
       origins: [pos],
       destinations: [$("#navAddr").val()],
       travelMode: google.maps.TravelMode.DRIVING,
-      unitSystem: google.maps.UnitSystem.METRIC,
+      unitSystem: google.maps.UnitSystem.IMPERIAL,
       avoidHighways: false,
       avoidTolls: false
     }, callback);
@@ -233,9 +233,10 @@ function callback(response, status) {
       // addMarker(origins[i], false);
       for (var j = 0; j < results.length; j++) {
        // addMarker(destinations[j], true);
-        distanceDiv.innerHTML += origins[i] + ' to ' + destinations[j]
-            + ': ' + results[j].distance.text + ' in '
-            + results[j].duration.text + '<br>';
+        // distanceDiv.innerHTML += origins[i] + ' to ' + destinations[j]
+        distanceDiv.innerHTML += ' Distance to ' + destinations[j]
+            + ': <br />' + results[j].distance.text + ' in '
+            + results[j].duration.text;
       }
     }
   }
@@ -378,7 +379,7 @@ right:left;
 		</h2>
 	</div>
 	<div id="distance">
-		<h2>Distance:<br />
+		<h2><br />
 			<span id="distanceDiv"></span>
 		</h2>
 	</div>
